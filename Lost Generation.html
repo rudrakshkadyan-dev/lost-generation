@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>Lost Generation Writers (1920s)</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#eef1f7;
+  --card:#ffffff;
+  --accent:#1a3d8f;
+  --muted:#6b7280;
+  --radius:14px;
+  font-family:"Montserrat",sans-serif;
+  color:#0f1724;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  padding:24px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+
+/* POPUP */
+#introScreen{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.65);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:10000;
+  animation:fadeIn 0.45s ease forwards;
+}
+.intro-box{
+  width:88%;
+  max-width:560px;
+  background:var(--card);
+  padding:30px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 18px 50px rgba(0,0,0,0.30);
+  transform:scale(0.92);
+  opacity:0;
+  animation:popIn 0.6s ease forwards;
+}
+.intro-logo{
+  width:110px;
+  margin-bottom:14px;
+}
+.enter-btn{
+  margin-top:20px;
+  padding:12px 28px;
+  border:none;
+  border-radius:10px;
+  background:var(--accent);
+  color:white;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 8px 18px rgba(26,61,143,0.18);
+}
+
+/* ANIMATIONS */
+@keyframes popIn{0%{opacity:0;transform:scale(0.85);}100%{opacity:1;transform:scale(1);}}
+@keyframes fadeOut{0%{opacity:1;}100%{opacity:0;}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes fadeUp{
+  0%{opacity:0; transform:translateY(26px);}
+  100%{opacity:1; transform:translateY(0);}
+}
+
+/* LAYOUT */
+.container{
+  max-width:1100px;
+  margin:0 auto;
+}
+header{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-bottom:8px;
+}
+.logo{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:var(--card);
+  border:3px solid var(--accent);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  flex-shrink:0;
+}
+.logo img{width:100%;height:100%;object-fit:contain;}
+.title h1{margin:0;font-size:20px;}
+.title p{margin:2px 0 0;font-size:13px;color:var(--muted)}
+
+/* CARDS */
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:var(--radius);
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  margin-top:18px;
+  opacity:0;
+  transform:translateY(30px);
+  animation:fadeUp 0.7s forwards;
+}
+.card h2{margin:0 0 8px 0;font-size:18px}
+.movement{
+  background:#f7f9ff;
+  padding:10px;
+  border-radius:8px;
+  margin-top:8px;
+  border:1px solid #e8eef9;
+  font-size:14px;
+}
+
+/* TEXT LISTS */
+ul{margin:8px 0 0 20px;color:var(--muted)}
+li{margin-bottom:6px}
+
+/* GALLERY */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:14px;
+  margin-top:12px;
+}
+figure{
+  background:var(--card);
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid #e4e4e4;
+  margin:0;
+  transition: transform 0.28s, box-shadow 0.28s;
+}
+figure:hover{
+  transform:translateY(-6px) scale(1.02);
+  box-shadow:0 18px 40px rgba(8,25,60,0.08);
+}
+figure img{
+  width:100%;
+  height:140px;
+  object-fit:cover;
+  display:block;
+}
+figcaption{
+  padding:10px;
+  font-size:13px;
+  color:var(--muted);
+  text-align:center;
+  min-height:44px;
+}
+
+/* FOOTER NOTE */
+.note{
+  margin-top:14px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* RESPONSIVE */
+@media (max-width:720px){
+  body{padding:14px;}
+  .intro-box{padding:20px}
+  .intro-logo{width:90px}
+  .title h1{font-size:18px}
+  .card{padding:16px}
+  figure img{height:120px}
+}
+</style>
+
+</head>
+<body>
+
+<!-- POPUP -->
+<div id="introScreen" aria-hidden="false">
+  <div class="intro-box" role="dialog" aria-labelledby="introTitle">
+    <img src="file:///C:/Users/user/Desktop/School%20Logo.jpeg.jpg" alt="Logo">
+    <h1 id="introTitle">Scholars Rosary School</h1>
+    <p><strong>Lost Generation Writers (1920s)</strong></p>
+    <p>Expatriates, Alienation and Modernist Innovation</p>
+    <button class="enter-btn" id="enterBtn">Enter Project</button>
+  </div>
+</div>
+
+<div class="container" id="mainContent" aria-hidden="true">
+
+<header>
+  <div class="logo" aria-hidden="true">
+    <img src="file:///C:/Users/user/Desktop/School%20Logo.jpeg.jpg" alt="Logo">
+  </div>
+  <div class="title">
+    <h1>Lost Generation: Writers & Themes (1920s)</h1>
+  </div>
+</header>
+
+<!-- BIO & THEMES -->
+<section class="card" style="animation-delay:0.2s">
+  <h2>Overview</h2>
+  <p>The <strong>Lost Generation</strong> refers to a group of writers in the post-World War I era who expressed disillusionment with contemporary values, embraced experimentation, and often lived as expatriates in Europe — especially Paris.</p>
+
+  <div class="movement">• <b>Alienation & Disillusionment</b> — sense of cultural rootlessness after the war</div>
+  <div class="movement">• <b>Expatriation</b> — many authors lived abroad to escape materialism at home</div>
+  <div class="movement">• <b>Formal Innovation</b> — minimalist prose, fragmentation, stream of consciousness</div>
+</section>
+
+<!-- WRITERS LIST -->
+<section class="card" style="animation-delay:0.4s">
+  <h2>Notable Writers</h2>
+  <ul>
+    <li><b>Ernest Hemingway</b> — The Sun Also Rises; A Farewell to Arms</li>
+    <li><b>F. Scott Fitzgerald</b> — The Great Gatsby; Tender Is the Night</li>
+    <li><b>Gertrude Stein</b> — Influential modernist mentor & writer</li>
+    <li><b>John Dos Passos</b> — Manhattan Transfer; U.S.A. trilogy</li>
+    <li><b>T. S. Eliot</b> — Poet of The Waste Land (modernist icon)</li>
+    <li><b>E. E. Cummings</b> — Unconventional poems and typographic play</li>
+    <li><b>Sherwood Anderson</b> — Winesburg, Ohio; mentor to younger writers</li>
+  </ul>
+
+  <p class="note">Note: Many of these figures overlapped with wider modernist movements in art and poetry.</p>
+</section>
+
+<!-- THEMES & TECHNIQUES -->
+<section class="card" style="animation-delay:0.6s">
+  <h2>Style & Techniques</h2>
+  <div class="movement">• <b>Minimalist Prose</b> — Hemingway's short declarative sentences</div>
+  <div class="movement">• <b>Fragmentation</b> — reflecting fractured modern life</div>
+  <div class="movement">• <b>Multiple Perspectives</b> — using varied narrators and collage-like structures</div>
+  <p style="margin-top:10px;color:var(--muted)">These techniques helped mirror the confusion and rapid social change of the early 20th century.</p>
+</section>
+
+<!-- GALLERY -->
+<section class="card" style="animation-delay:0.8s">
+  <h2>Gallery: Portraits & Works</h2>
+
+  <div class="gallery">
+
+    <figure>
+      <img src="file:///C:/Users/user/Desktop/Sun.jpeg" alt="Ernest Hemingway portrait">
+      <figcaption><strong>Ernest Hemingway</strong><br><small>The Sun Also Rises</small></figcaption>
+    </figure>
+
+    <figure>
+      <img src="file:///C:/Users/user/Desktop/Gatsby.jpeg" alt="F. Scott Fitzgerald portrait">
+      <figcaption><strong>F. Scott Fitzgerald</strong><br><small>The Great Gatsby</small></figcaption>
+    </figure>
+
+    <figure>
+      <img src="file:///C:/Users/user/Desktop/Stein.jpeg" alt="Gertrude Stein portrait">
+      <figcaption><strong>Gertrude Stein</strong><br><small>Modernist mentor</small></figcaption>
+    </figure>
+
+    <figure>
+      <img src="file:///C:/Users/user/Desktop/Transfer.jpeg" alt="John Dos Passos portrait">
+      <figcaption><strong>John Dos Passos</strong><br><small>Manhattan Transfer</small></figcaption>
+    </figure>
+
+    <figure>
+      <img src="file:///C:/Users/user/Desktop/Eliot.jpeg" alt="T. S. Eliot portrait">
+      <figcaption><strong>T. S. Eliot</strong><br><small>The Waste Land</small></figcaption>
+    </figure>
+
+    <figure>
+      <img src="file:///C:/Users/user/Desktop/Ohio.jpeg" alt="E. E. Cummings portrait">
+      <figcaption><strong>E. E. Cummings</strong><br><small>Typographic play</small></figcaption>
+    </figure>
+
+    <figure>
+      <img src="file:///C:/Users/user/Desktop/Case.jpeg" alt="Sherwood Anderson portrait">
+      <figcaption><strong>Sherwood Anderson</strong><br><small>Winesburg, Ohio</small></figcaption>
+    </figure>
+
+  </div>
+</section>
+
+</div>
+
+<script>
+/* Intro / accessibility: open/close */
+const intro = document.getElementById('introScreen');
+const main = document.getElementById('mainContent');
+const enterBtn = document.getElementById('enterBtn');
+
+function closeIntro(){
+  if(!intro) return;
+  intro.style.animation = 'fadeOut 0.6s forwards';
+  intro.setAttribute('aria-hidden','true');
+  // reveal main content after animation
+  setTimeout(()=>{
+    try{ intro.remove(); }catch(e){}
+    main.setAttribute('aria-hidden','false');
+  },620);
+}
+
+// allow button and Enter key to close
+enterBtn.addEventListener('click', closeIntro);
+document.addEventListener('keydown', e => {
+  if(document.body.contains(intro) && (e.key === 'Enter' || e.key === ' ')){
+    // prevent scrolling on space
+    e.preventDefault();
+    closeIntro();
+  }
+});
+</script>
+
+</body>
+</html>
